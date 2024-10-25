@@ -1,0 +1,14 @@
+{% extends "prodavnica/base.html" %}
+{% block content %}
+    <h2>Podešavanja Profila</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ p_form.as_p }}
+        <button type="submit">Ažuriraj Email</button>
+    </form>
+    <form method="POST">
+        {% csrf_token %}
+        {{ pass_form.as_p }}
+        <button type="submit">Promeni Šifru</button>
+    </form>
+{% endblock %}

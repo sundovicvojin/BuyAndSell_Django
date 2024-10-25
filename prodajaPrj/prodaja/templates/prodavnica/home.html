@@ -1,0 +1,20 @@
+{% extends "prodavnica/base.html" %}
+{% block content %}
+    <h1>Proizvodi za prodaju</h1>
+    <form method="GET">
+        {{ pretraga_form.query }}
+        {{ filter_form.min_cena }}
+        {{ filter_form.max_cena }}
+        {{ filter_form.kategorija }}
+        <button type="submit">Pretraga</button>
+    </form>
+    {% for proizvod in proizvodi %}
+        <div>
+            <h2>{{ proizvod.naslov }}</h2>
+            <p>{{ proizvod.opis }}</p>
+            <p>Cena: {{ proizvod.cena }}</p>
+            <p>Kategorija: {{ proizvod.kategorija }}</p>
+            <small>Postavio/la: {{ proizvod.postavljen_datum }}</small>
+        </div>
+    {% endfor %}
+{% endblock %}

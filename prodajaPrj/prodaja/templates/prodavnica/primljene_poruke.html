@@ -1,0 +1,11 @@
+{% extends "prodavnica/base.html" %}
+{% block content %}
+    <h2>Primljene Poruke</h2>
+    {% for poruka in poruke %}
+        <div>
+            <strong>Od: {{ poruka.posiljalac.username }}</strong>
+            <p>{{ poruka.tekst }}</p>
+            <small>{{ poruka.datum }}</small>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prodaja</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'primljene_poruke' %}">Poruke</a></li>
+                <li><a href="{% url 'dodaj_proizvod' %}">Dodaj Oglas</a></li>
+                <li><a href="{% url 'profile_settings' %}">Podesavanja Profila</a></li>
+                <li>
+                    <form method="POST" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'registracija' %}">Registracija</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
